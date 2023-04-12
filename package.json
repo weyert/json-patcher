@@ -10,10 +10,12 @@
         "artifacts/*"
     ],
     "scripts": {
-        "build": "cargo-cp-artifact -nc artifacts/index.node -- cargo build --message-format=json-render-diagnostics",
-        "build-debug": "npm run build --",
-        "build-release": "npm run build -- --release",
-        "test": "cargo test"
+        "node:build": "cargo-cp-artifact -nc artifacts/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
+        "node:build:release": "npm run node:build -- --release",
+        "browser:build": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/debug/diff_updater.wasm",
+        "browser:build:release": "cargo build --target wasm32-unknown-unknown --release && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/release/diff_updater.wasm",
+        "build": "npm run node:build && npm run browser:build",
+        "build:release": "npm run node:build:release && npm run browser:build:release"
     },
     "license": "",
     "devDependencies": {
