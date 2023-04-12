@@ -4,8 +4,10 @@
     "description": "Diff Updater",
     "main": "js/node.js",
     "browser": "js/browser.js",
+    "types": "types.d.ts",
     "repository": "https://github.com/formbird/diff-updater",
     "files": [
+        "types.d.ts",
         "js/*",
         "artifacts/*"
     ],
