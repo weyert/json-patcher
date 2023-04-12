@@ -1,0 +1,22 @@
+[package]
+name = "diff-updater"
+version = "0.1.0"
+license = "ISC"
+edition = "2021"
+exclude = ["index.node"]
+
+[lib]
+crate-type = ["cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+neon-serde = { git = "https://github.com/formbird/neon-serde", package = "neon-serde2", features = ["dates"]}
+json-patch = "0.3.0"
+serde_json = "1.0.95"
+serde = "1.0.160"
+
+[dependencies.neon]
+version = "0.10"
+default-features = false
+features = ["napi-6"]
