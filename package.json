@@ -1,17 +1,22 @@
 {
-  "name": "diff-updater",
-  "version": "0.1.0",
-  "description": "Diff Updater",
-  "main": "index.node",
-  "scripts": {
-    "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
-    "build-debug": "npm run build --",
-    "build-release": "npm run build -- --release",
-    "install": "npm run build-release",
-    "test": "cargo test"
-  },
-  "license": "",
-  "devDependencies": {
-    "cargo-cp-artifact": "^0.1"
-  }
+    "name": "diff-updater",
+    "version": "0.1.0",
+    "description": "Diff Updater",
+    "main": "js/node.js",
+    "browser": "js/browser.js",
+    "repository": "https://github.com/formbird/diff-updater",
+    "files": [
+        "js/*",
+        "artifacts/*"
+    ],
+    "scripts": {
+        "build": "cargo-cp-artifact -nc artifacts/index.node -- cargo build --message-format=json-render-diagnostics",
+        "build-debug": "npm run build --",
+        "build-release": "npm run build -- --release",
+        "test": "cargo test"
+    },
+    "license": "",
+    "devDependencies": {
+        "cargo-cp-artifact": "^0.1"
+    }
 }
