@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "description": "Diff Updater",
     "main": "js/node.js",
-    "browser": "js/browser.js",
+    "browser": "artifacts/browser.mjs",
     "types": "types.d.ts",
     "repository": "https://github.com/formbird/diff-updater",
     "files": [
@@ -14,13 +14,17 @@
     "scripts": {
         "node:build": "cargo-cp-artifact -nc artifacts/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
         "node:build:release": "npm run node:build -- --release",
-        "browser:build": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/debug/diff_updater.wasm",
-        "browser:build:release": "cargo build --target wasm32-unknown-unknown --release && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/release/diff_updater.wasm",
+        "build:vite": "vite build",
+        "browser:build": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/debug/diff_updater.wasm && npm run build:vite",
+        "browser:build:release": "cargo build --target wasm32-unknown-unknown --release && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/release/diff_updater.wasm && npm run build:vite",
         "build": "npm run node:build && npm run browser:build",
         "build:release": "npm run node:build:release && npm run browser:build:release"
     },
     "license": "",
     "devDependencies": {
-        "cargo-cp-artifact": "^0.1"
+        "cargo-cp-artifact": "^0.1",
+        "vite": "^4.2.2",
+        "vite-plugin-top-level-await": "^1.3.0",
+        "vite-plugin-wasm": "^3.2.2"
     }
 }
