@@ -6,9 +6,8 @@
     "browser": "artifacts/browser.mjs",
     "types": "types.d.ts",
     "repository": "https://github.com/formbird/diff-updater",
-    "files": [
-        "types.d.ts",
-        "js/*",
+    "exclude": [
+        "target/*",
         "artifacts/*"
     ],
     "scripts": {
