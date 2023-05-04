@@ -1,4 +1,4 @@
-const bindings = require("../artifacts/diff_updater.node");
+const bindings = require("./diff_updater.node");
 
 module.exports = {
     createPatch: bindings.createPatch,
