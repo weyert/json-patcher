@@ -6,19 +6,19 @@
     "browser": "artifacts/browser.mjs",
     "types": "types.d.ts",
     "repository": "https://github.com/formbird/diff-updater",
-    "files": [
-        "types.d.ts",
-        "js/*",
+    "exclude": [
+        "target/*",
         "artifacts/*"
     ],
     "scripts": {
-        "node:build": "cargo-cp-artifact -nc artifacts/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
+        "node:build": "cargo-cp-artifact -nc js/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
         "node:build:release": "npm run node:build -- --release",
         "build:vite": "vite build",
         "browser:build": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/debug/diff_updater.wasm && npm run build:vite",
         "browser:build:release": "cargo build --target wasm32-unknown-unknown --release && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/release/diff_updater.wasm && npm run build:vite",
         "build": "npm run node:build && npm run browser:build",
-        "build:release": "npm run node:build:release && npm run browser:build:release"
+        "build:release": "npm run node:build:release && npm run browser:build:release",
+        "install": "npm run node:build:release"
     },
     "license": "",
     "devDependencies": {
