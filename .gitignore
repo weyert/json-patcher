@@ -1,5 +1,0 @@
-*.js
-*.d.ts
-coverage/
-package-lock.json
-!dist/*.js
