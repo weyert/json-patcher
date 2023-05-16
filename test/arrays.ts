@@ -1,7 +1,8 @@
 import test from 'ava'
 
-import {applyPatch, createPatch} from '../index'
-import {clone} from '../util'
+import {applyPatch} from '..'
+import {createParsedPatch as createPatch} from "./_index";
+
 
 const pairs = [
   [
@@ -42,8 +43,7 @@ const pairs = [
 pairs.forEach(([input, output]) => {
   test(`diff+patch: [${input}] => [${output}]`, t => {
     const patch = createPatch(input, output)
-    const actual_output = clone(input)
-    applyPatch(actual_output, patch)
-    t.deepEqual(actual_output, output, 'should apply produced patch to arrive at output')
+    const actualOutput = applyPatch(input, patch)
+    t.deepEqual(actualOutput, output, 'should apply produced patch to arrive at output')
   })
 })

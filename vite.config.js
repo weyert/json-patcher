@@ -5,12 +5,12 @@ import wasm from "vite-plugin-wasm";
 export default defineConfig({
     build: {
         lib: {
-            entry: './artifacts/diff_updater.js',
+            entry: './browser/diff_updater.js',
             name: 'diff-updater',
-            fileName: 'browser',
+            fileName: 'index',
             formats: ['es']
         },
-        outDir: 'artifacts',
+        outDir: 'browser',
         emptyOutDir: false
     },
     plugins: [

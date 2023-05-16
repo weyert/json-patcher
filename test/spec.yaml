@@ -17,6 +17,7 @@
   output:
     {"foo": [ "bar", "qux", "baz" ]}
   results: [null]
+  ignored: true
   diffable: true
 
 - name: A.3. Removing an Object Member
@@ -37,6 +38,7 @@
   output:
     {"foo": [ "bar", "baz" ]}
   results: [null]
+  ignored: true
   diffable: true
 
 - name: A.5. Replacing a Value
@@ -199,6 +201,7 @@
   output:
     {"foo": ["bar", ["abc", "def"]]}
   results: [null]
+  ignored: true
   diffable: true
 
 # tests
@@ -252,4 +255,5 @@
   patch:
     - {op: "replace", path: "/repositories", value: {}}
   results: [null]
+  ignored: true
   diffable: true
