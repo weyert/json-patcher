@@ -6,9 +6,10 @@ interface PatchOperation {
         'copy' |
         'test',
     path: string,
-    value: any
+    from?: string,
+    value?: any
 }
 
 export function createPatch(left: any, right: any): any;
 
-export function applyPatch<T>(doc: T, right: PatchOperation[]): T;
+export function applyPatch<T>(doc: T, right: PatchOperation[]): any;
