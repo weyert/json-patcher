@@ -1,6 +1,6 @@
 {
     "name": "@formbird/json-patcher",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Diff Updater",
     "main": "node/index.js",
     "browser": "artifacts/browser.mjs",
@@ -13,13 +13,13 @@
     ],
     "scripts": {
         "node:build": "cargo-cp-artifact -nc node/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
-        "node:build:release": "npm run node:build -- --release",
+        "node:build:release": "$npm_execpath run node:build -- --release",
         "build:vite": "vite build",
-        "browser:build": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir browser/ --target bundler target/wasm32-unknown-unknown/debug/diff_updater.wasm && npm run build:vite",
-        "browser:build:release": "cargo build --target wasm32-unknown-unknown --release && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/release/diff_updater.wasm && npm run build:vite",
-        "build": "npm run node:build && npm run browser:build",
-        "build:release": "npm run node:build:release && npm run browser:build:release",
-        "install": "npm run node:build:release",
+        "browser:build": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir browser/ --target bundler target/wasm32-unknown-unknown/debug/diff_updater.wasm && $npm_execpath run build:vite",
+        "browser:build:release": "cargo build --target wasm32-unknown-unknown --release && wasm-bindgen --out-dir artifacts/ --target bundler target/wasm32-unknown-unknown/release/diff_updater.wasm && $npm_execpath run build:vite",
+        "build": "$npm_execpath run node:build && $npm_execpath run browser:build",
+        "build:release": "$npm_execpath run node:build:release && $npm_execpath run browser:build:release",
+        "install": "$npm_execpath run node:build:release",
         "pretest": "tsc -p test/tsconfig.json",
         "test": "ava"
     },
