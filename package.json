@@ -1,11 +1,12 @@
 {
-    "name": "diff-updater",
+    "name": "@formbird/json-patcher",
     "version": "0.1.0",
     "description": "Diff Updater",
     "main": "node/index.js",
     "browser": "artifacts/browser.mjs",
+    "prviate": true,
     "types": "types.d.ts",
-    "repository": "https://github.com/formbird/diff-updater",
+    "repository": "https://github.com/formbird/json-patcher",
     "exclude": [
         "target/*",
         "artifacts/*"
@@ -22,7 +23,6 @@
         "pretest": "tsc -p test/tsconfig.json",
         "test": "ava"
     },
-    "license": "",
     "devDependencies": {
         "@types/node": "^20.1.5",
         "ava": "^5.2.0",

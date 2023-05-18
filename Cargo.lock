@@ -112,19 +112,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "diff-updater"
-version = "0.1.0"
-dependencies = [
- "json-patch",
- "neon",
- "neon-serde2",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "wasm-bindgen",
-]
-
-[[package]]
 name = "iana-time-zone"
 version = "0.1.56"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -173,6 +160,19 @@ dependencies = [
  "serde_json",
  "thiserror",
  "treediff",
+]
+
+[[package]]
+name = "json-patcher"
+version = "0.1.0"
+dependencies = [
+ "json-patch",
+ "neon",
+ "neon-serde2",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "wasm-bindgen",
 ]
 
 [[package]]
