@@ -1,6 +1,6 @@
 {
     "name": "@formbird/json-patcher",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Diff Updater",
     "main": "node/index.js",
     "browser": "artifacts/browser.mjs",
@@ -12,7 +12,7 @@
         "artifacts/*"
     ],
     "scripts": {
-        "node:build": "cargo-cp-artifact -nc node/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
+        "node:build": "npx cargo-cp-artifact -nc node/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
         "node:build:release": "$npm_execpath run node:build -- --release",
         "build:vite": "vite build",
         "browser:build": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir browser/ --target bundler target/wasm32-unknown-unknown/debug/diff_updater.wasm && $npm_execpath run build:vite",
