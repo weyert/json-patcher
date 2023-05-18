@@ -6,7 +6,7 @@ export default defineConfig({
     build: {
         lib: {
             entry: './browser/diff_updater.js',
-            name: 'diff-updater',
+            name: 'json-patcher',
             fileName: 'index',
             formats: ['es']
         },

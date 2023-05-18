@@ -1,4 +1,4 @@
-# diff-updater
+# json-patcher
 
 A JSON Patch (RFC 6902) and JSON Merge Patch (RFC 7396) implementation for JS (browser and Node) using Rust.
 
@@ -8,21 +8,21 @@ This library is built with:
 
 Implementation of the patch and merge alogrithms is provided using [json-patch](https://docs.rs/json-patch/) crate.
 
-## Installing diff-updater
+## Installing json-patcher
 
-Installing diff-updater requires a [supported version of Node and Rust](https://github.com/neon-bindings/neon#platform-support).
+Installing json-patcher requires a [supported version of Node and Rust](https://github.com/neon-bindings/neon#platform-support).
 
 You can install the project with npm.
 
 ```sh
-$ npm install diff-updater
+$ npm install @formbird/json-patcher
 ```
 
 This fully installs the project, including installing any dependencies and running the build.
 
 ## Contributing
 
-### Building diff-updater
+### Building json-patcher
 
 Make sure you have Rust and [`wasm-bindgen`](https://rustwasm.github.io/wasm-bindgen/) installed. From the checked out source, run:
 
