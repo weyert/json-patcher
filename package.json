@@ -1,14 +1,17 @@
 {
     "name": "@formbird/json-patcher",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Diff Updater",
     "main": "node/index.js",
     "browser": "browser/index.mjs",
     "types": "types.d.ts",
     "repository": "https://github.com/formbird/json-patcher",
-    "exclude": [
-        "target/*",
-        "artifacts/*"
+    "files": [
+        "Cargo.*",
+        "src/*",
+        "browser/*",
+        "node/index.js",
+        "README.md"
     ],
     "scripts": {
         "node:build": "npx cargo-cp-artifact -nc node/diff_updater.node -- cargo build --message-format=json-render-diagnostics",
