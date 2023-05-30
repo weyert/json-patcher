@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - uses: Swatinem/rust-cache@v2
+      # this is needed because wasm-pack can't be used:
+      # https://github.com/rustwasm/wasm-pack/issues/691
+      - name: Install wasm-bindgen
+        run: |
+          if [ ! -f "Cargo.lock" ]; then
+            cargo fetch
+          fi
+
+          VERSION=$(cargo pkgid --frozen wasm-bindgen | cut -d "@" -f 2)
+          cargo +stable install --version $VERSION wasm-bindgen-cli
+      
+      - run: npm install
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+
+      - run: npm run build:release
+
+      - run: npm run test
+      
