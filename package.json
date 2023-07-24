@@ -5,6 +5,7 @@
     "main": "node/index.js",
     "browser": "browser/index.mjs",
     "types": "types.d.ts",
+    "license": "MIT OR Apache-2.0",
     "repository": "https://github.com/formbird/json-patcher",
     "files": [
         "Cargo.*",
