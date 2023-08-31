@@ -4,10 +4,16 @@ import {expect} from "chai";
 
 it(`dates round trip`, () => {
     const input = {
-        date: new Date(2023, 4, 20)
+        date: new Date(2023, 6, 9),
+        systemHeader: {
+            date: new Date(2023, 4, 20)
+        }
     }
     const output = {
-        date: new Date(2023, 6, 9)
+        date: new Date(2023, 4, 20),
+        systemHeader: {
+            date: new Date(2023, 6, 9)
+        }
     }
     const patch = createPatch(input, output)
     const actualOutput = applyPatch(input, patch)
@@ -17,7 +23,7 @@ it(`dates round trip`, () => {
     // for some reason, after going through neon, instanceof Date check fails _here_?
     // this may have something to do with jest, as in neon_serde tests with mocha, the assertion is successful
     expect(actualOutput.date.toISOString()).to.equal(output.date.toISOString())
-
+    expect(actualOutput.systemHeader.date.toISOString()).to.equal(output.systemHeader.date.toISOString())
 })
 
 it(`patch has special date string`, () => {
