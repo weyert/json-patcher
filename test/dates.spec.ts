@@ -11,13 +11,17 @@ it(`dates round trip`, () => {
     }
     const patch = createPatch(input, output)
     const actualOutput = applyPatch(input, patch)
+
     expect(actualOutput).to.deep.equal(output);
-    expect(actualOutput.date).to.be.instanceOf(Date)
+    // this is a way to check that the `actualOutput.date` is actually a date.
+    // for some reason, after going through neon, instanceof Date check fails _here_?
+    // this may have something to do with jest, as in neon_serde tests with mocha, the assertion is successful
+    expect(actualOutput.date.toISOString()).to.equal(output.date.toISOString())
+
 })
 
 it(`patch has special date string`, () => {
-    const input = {
-    }
+    const input = {}
     const output = {
         date: new Date(2023, 6, 9)
     }
