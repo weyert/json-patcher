@@ -19,8 +19,8 @@ fn to_json_value<'a, D: DeserializeOwned>(
 ) -> Result<D, Throw> {
     match neon_serde::from_value(cx, js_value) {
         Ok(v) => Ok(v),
-        Err(neon_serde::errors::Error::Js(err)) => return Err(err),
-        Err(e) => return cx.throw_error(e.to_string()),
+        Err(neon_serde::errors::Error::Js(err)) => Err(err),
+        Err(e) => cx.throw_error(e.to_string()),
     }
 }
 
@@ -47,8 +47,8 @@ pub fn apply_patch(mut cx: FunctionContext) -> JsResult<JsValue> {
 
     match neon_serde::to_value(&mut cx, &doc) {
         Ok(v) => Ok(v),
-        Err(neon_serde::errors::Error::Js(err)) => return Err(err),
-        Err(e) => return cx.throw_error(e.to_string()),
+        Err(neon_serde::errors::Error::Js(err)) => Err(err),
+        Err(e) => cx.throw_error(e.to_string()),
     }
 }
 

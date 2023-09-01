@@ -1,6 +1,6 @@
-use wasm_bindgen::prelude::*;
 use json_patch::PatchOperation;
 use serde::ser::Serialize;
+use wasm_bindgen::prelude::*;
 
 fn to_value(value: impl Serialize) -> Result<JsValue, serde_wasm_bindgen::Error> {
     let ser = serde_wasm_bindgen::Serializer::json_compatible();
