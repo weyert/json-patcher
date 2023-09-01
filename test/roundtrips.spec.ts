@@ -1,5 +1,4 @@
-import {applyPatch, type PatchOperation} from "..";
-import { createParsedPatch as createPatch } from './_index'
+import {applyPatch, type PatchOperation, createPatch} from "..";
 import { expect } from 'chai'
 
 function checkRoundtrip(

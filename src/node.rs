@@ -24,7 +24,7 @@ fn to_json_value<'a, D: DeserializeOwned>(
     }
 }
 
-pub fn create_patch(mut cx: FunctionContext) -> JsResult<JsString> {
+pub fn create_patch(mut cx: FunctionContext) -> JsResult<JsValue> {
     let left = cx.argument::<JsValue>(0)?;
     let left = to_json_value(&mut cx, left)?;
 
@@ -32,8 +32,8 @@ pub fn create_patch(mut cx: FunctionContext) -> JsResult<JsString> {
     let right = to_json_value(&mut cx, right)?;
 
     let patch = json_patch::diff(&left, &right);
-    let s = map_to_neon!(cx, serde_json::to_string(&patch))?;
-    Ok(cx.string(s))
+    let s = map_to_neon!(cx, neon_serde::to_value(&mut cx, &patch))?;
+    Ok(s)
 }
 
 pub fn apply_patch(mut cx: FunctionContext) -> JsResult<JsValue> {
