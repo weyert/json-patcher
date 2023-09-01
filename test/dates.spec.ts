@@ -41,11 +41,12 @@ it(`dates round trip`, () => {
 })
 
 it(`patch includes dates`, () => {
+    const date = new Date()
     const input = {}
     const output = {
-        date: new Date(2023, 6, 9)
+        date
     }
     const patch = createPatch(input, output)
     const op = patch[0]
-    expect(op.value.toISOString()).to.equal("2023-07-08T19:00:00.000Z")
+    expect(op.value.toISOString()).to.equal(date.toISOString())
 })
