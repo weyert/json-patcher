@@ -44,7 +44,7 @@ spec_data.filter(spec => spec.diffable).forEach(spec => {
     runCatching(spec, () => {
       const actual = createPatch(spec.input, spec.output)
       const expected = spec.patch.filter(operation => operation.op !== 'test')
-      expect(JSON.parse(actual)).to.deep.equal(expected)
+      expect(actual).to.deep.equal(expected)
     })
   })
 })

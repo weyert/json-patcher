@@ -19,12 +19,12 @@ fn to_json_value<'a, D: DeserializeOwned>(
 ) -> Result<D, Throw> {
     match neon_serde::from_value(cx, js_value) {
         Ok(v) => Ok(v),
-        Err(neon_serde::errors::Error::Js(err)) => return Err(err),
-        Err(e) => return cx.throw_error(e.to_string()),
+        Err(neon_serde::errors::Error::Js(err)) => Err(err),
+        Err(e) => cx.throw_error(e.to_string()),
     }
 }
 
-pub fn create_patch(mut cx: FunctionContext) -> JsResult<JsString> {
+pub fn create_patch(mut cx: FunctionContext) -> JsResult<JsValue> {
     let left = cx.argument::<JsValue>(0)?;
     let left = to_json_value(&mut cx, left)?;
 
@@ -32,8 +32,8 @@ pub fn create_patch(mut cx: FunctionContext) -> JsResult<JsString> {
     let right = to_json_value(&mut cx, right)?;
 
     let patch = json_patch::diff(&left, &right);
-    let s = map_to_neon!(cx, serde_json::to_string(&patch))?;
-    Ok(cx.string(s))
+    let s = map_to_neon!(cx, neon_serde::to_value(&mut cx, &patch))?;
+    Ok(s)
 }
 
 pub fn apply_patch(mut cx: FunctionContext) -> JsResult<JsValue> {
@@ -47,8 +47,8 @@ pub fn apply_patch(mut cx: FunctionContext) -> JsResult<JsValue> {
 
     match neon_serde::to_value(&mut cx, &doc) {
         Ok(v) => Ok(v),
-        Err(neon_serde::errors::Error::Js(err)) => return Err(err),
-        Err(e) => return cx.throw_error(e.to_string()),
+        Err(neon_serde::errors::Error::Js(err)) => Err(err),
+        Err(e) => cx.throw_error(e.to_string()),
     }
 }
 

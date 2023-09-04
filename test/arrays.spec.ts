@@ -1,6 +1,5 @@
 import { expect } from 'chai'
-import {applyPatch} from '..'
-import {createParsedPatch as createPatch} from "./_index";
+import {applyPatch, createPatch} from '..'
 
 
 const pairs = [
