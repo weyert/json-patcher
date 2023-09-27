@@ -10,7 +10,7 @@
     "files": [
         "Cargo.*",
         "src/*",
-        "browser/*",
+        "browser/**/*",
         "node/index.js",
         "README.md"
     ],
