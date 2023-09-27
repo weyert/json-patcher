@@ -36,7 +36,3 @@ lto = true
 [dev-dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }
 json-patch = { version = "1.1.0", default-features = false, features = ["diff"] }
-
-[[bench]]
-name = "diff"
-harness = false
