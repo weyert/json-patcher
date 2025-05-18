@@ -21,7 +21,7 @@ default-features = false
 features = ["napi-6"]
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
-wasm-bindgen = "0.2.86"
+wasm-bindgen = "0.2.88"
 
 [profile.release]
 # less code to include into binary
