@@ -1,10 +1,14 @@
+name: Test
+
 on:
   push:
     branches:
       - master
+      - main
   pull_request:
     branches:
       - master
+      - main
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -23,7 +27,7 @@ jobs:
 
       - name: Install wasm-pack
         run: cargo install --git https://github.com/rustwasm/wasm-pack
-      
+
       - run: npm install
       - name: Install playwright browsers
         run: npx playwright install --with-deps
@@ -31,4 +35,3 @@ jobs:
       - run: npm run build:release
 
       - run: npm run test
-      
